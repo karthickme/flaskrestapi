@@ -1,6 +1,6 @@
 # flaskrestapi
 
-Steps to use the app in local
+Steps to use the app in local <br>
 docker build . -t flaskapp:latest
 
 docker run -d -p 5000:5000 flaskapp:latest
