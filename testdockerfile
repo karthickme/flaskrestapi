@@ -1,0 +1,5 @@
+docker pull openjdk:8-jre-slim-buster
+
+apt-get update
+apt-get install python3.
+6

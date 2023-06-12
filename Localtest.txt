@@ -5,3 +5,10 @@ docker run -d -p 5000:5000 flaskapp:latest
 curl --location 'http://localhost:5000/api/startjob' \
 --header 'Content-Type: application/json' \
 --data '{"name":"YourNameHere"}'
+
+
+
+/etc/apt/sources.list
+https://stackoverflow.com/questions/66372192/build-errors-when-trying-to-install-openjdk-8-jre-on-python3-8-slim-buster-imag
+
+https://linuxize.com/post/install-java-on-debian-10/#installing-openjdk-8
