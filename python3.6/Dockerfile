@@ -1,4 +1,4 @@
-FROM python:3.6.13
+FROM python:3.12.0b1
 
 RUN echo "deb http://archive.debian.org/debian stretch main" >> /etc/apt/sources.list
 
