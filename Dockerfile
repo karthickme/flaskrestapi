@@ -1,5 +1,5 @@
 # FROM python:3.6-slim-buster
-FROM python:3.6.13
+FROM python:3.12.0b3
 WORKDIR /app
 
 # Install OpenJDK-11
