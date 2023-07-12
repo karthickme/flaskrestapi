@@ -1,0 +1,27 @@
+FROM python:3.6@sha256:f8652afaf88c25f0d22354d547d892591067aa4026a7fa9a6819df9f300af6fc
+
+RUN apt-get update -qq
+RUN apt-get install -y build-essential
+
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+RUN curl -SSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl -SSL https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update
+RUN ACCEPT_EULA=Y apt-get install -y unixodbc-dev
+# RUN echo "deb http://deb.debian.org/debian/ sid main" >> /etc/apt/sources.list
+
+RUN apt-get install -y software-properties-common
+RUN curl -SSL https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
+RUN add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+RUN apt-get update && apt-get install -y adoptopenjdk-8-hotspot-jre
+
+
+# RUN apt-get update && \
+#     apt-get install -y openjdk-8-jre && \
+#     apt-get clean;
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
