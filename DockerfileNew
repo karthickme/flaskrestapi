@@ -14,14 +14,23 @@ RUN apt-get update
 RUN ACCEPT_EULA=Y apt-get install -y unixodbc-dev
 # RUN echo "deb http://deb.debian.org/debian/ sid main" >> /etc/apt/sources.list
 
-RUN apt-get install -y software-properties-common
-RUN curl -SSL https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
-RUN add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-RUN apt-get update && apt-get install -y adoptopenjdk-8-hotspot-jre
+# RUN apt-get install -y software-properties-common
+# RUN curl -SSL https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
+# RUN add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+# RUN apt-get update && apt-get install -y adoptopenjdk-8-hotspot-jre
 
 
 # RUN apt-get update && \
 #     apt-get install -y openjdk-8-jre && \
 #     apt-get clean;
+
+
+# RUN curl -O https://cdn.azul.com/zulu/bin/zulu8.70.0.23-ca-jdk8.0.372-linux_x64.tar.gz
+# RUN tar -xzvf zulu8.70.0.23-ca-jdk8.0.372-linux_x64.tar.gz
+# ENV JAVA_HOME=/app/zulu8.70.0.23-ca-jdk8.0.372-linux_x64
+RUN curl -O https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u372-b07/openlogic-openjdk-jre-8u372-b07-linux-x64.tar.gz
+RUN tar -xzvf openlogic-openjdk-jre-8u372-b07-linux-x64.tar.gz
+ENV JAVA_HOME=/app/openlogic-openjdk-jre-8u372-b07-linux-x64
+ENV PATH=$JAVA_HOME/bin:$PATH
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
