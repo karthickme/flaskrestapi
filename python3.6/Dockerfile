@@ -1,4 +1,4 @@
-FROM python:3.12.0rc2-slim-bullseye
+FROM python:3.13.0a4-slim-bullseye
 
 RUN echo "deb http://archive.debian.org/debian stretch main" >> /etc/apt/sources.list
 
